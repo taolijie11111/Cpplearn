@@ -9,7 +9,7 @@ class Image
 {
 private:
   //addPrototype()saves each registered prototype here
-  static Image* _prototypes[10];
+  static Image* _prototypes[10]; 
   static int _nextSlot;
 public:
   virtual void draw()=0;
@@ -27,12 +27,19 @@ int Image::_nextSlot;
 
 //Client calls this public static menmber function when it needs an instance 
 //of an Image subclass
+// Image *Image::findAndClone(imageType type){
+//   for(int i=0;i<_nextSlot;i++)
+//     if(_prototypes[i]->returnType()==type)
+//       return _prototypes[i]->clone();
+// }
+//warning: control reaches end of non-void function [-Wreturn-type]
+//这里表示return可能为null值
 Image *Image::findAndClone(imageType type){
   for(int i=0;i<_nextSlot;i++)
     if(_prototypes[i]->returnType()==type)
       return _prototypes[i]->clone();
+  return 0;//暂时不知道添加什么，这里先添加一个东西
 }
-
 
 class LandSatImage:public Image
 {
@@ -97,12 +104,12 @@ SpotImage SpotImage::_spotImage;
 int SpotImage::_count=1;
 
 //Simulated stream of creation requests
-const int NUM_IMAGES=8;
-imageType input[NUM_IMAGES]={
+const int NUM_IMAGES=8;//这里定义了一个全局变量
+imageType input[NUM_IMAGES]={//暂时还不是很理解前面的返回为imageType类型究竟表示什么意思
   LAST,LAST,LAST,SPOT,LAST,SPOT,SPOT,LAST
 };
 int main(){
-  Image* images[NUM_IMAGES];
+  Image* images[NUM_IMAGES]; //image*类型，指针
   //Given an image type,find the right prototype,and return a clone 
   for (int i=0;i<NUM_IMAGES;i++)
     images[i]=Image::findAndClone(input[i]);
@@ -111,5 +118,5 @@ int main(){
     images[i]->draw();
   //Free the dynamic menmory
   for(int i=0;i<NUM_IMAGES;i++)
-    delete images[i];
+    delete images[i]; //删除指针
 }
