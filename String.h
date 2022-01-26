@@ -1,6 +1,5 @@
 #ifndef __STRING__
 #define __STRING__
-#include<iostream>
 
 class String
 {

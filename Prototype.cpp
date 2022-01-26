@@ -27,19 +27,12 @@ int Image::_nextSlot;
 
 //Client calls this public static menmber function when it needs an instance 
 //of an Image subclass
-// Image *Image::findAndClone(imageType type){
-//   for(int i=0;i<_nextSlot;i++)
-//     if(_prototypes[i]->returnType()==type)
-//       return _prototypes[i]->clone();
-// }
-//这里有一个warning: control reaches end of non-void function [-Wreturn-type]
-//因为return没有定义完，如果if这一块else就没有返回值
 Image *Image::findAndClone(imageType type){
   for(int i=0;i<_nextSlot;i++)
     if(_prototypes[i]->returnType()==type)
       return _prototypes[i]->clone();
-  return 0;//这里暂时不知道需要些什么，先添加上吧
 }
+
 
 class LandSatImage:public Image
 {
