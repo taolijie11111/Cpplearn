@@ -15,4 +15,3 @@
         return _prototypes[i]->clone();
     }//control reaches end of non-void function [-Wreturn-type]
     ```
-  

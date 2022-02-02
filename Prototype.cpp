@@ -1,15 +1,25 @@
-# include <iostream>
+#include <iostream>
+//导入标准库，使用<>和使用""是有区别的
+//1、#include <> 编译器只会去系统文件目录中查找，找不到就报错。
+//2、#include " "  编译器会先在用户目录中查找，再到编译器设定的目录中查找，最后到系统文件中目录中查找。
 using namespace std;
+//使用namespace，命名空间
 
 enum imageType //枚举类型
 {
   LAST,SPOT
 };
+//enum <类型名> {<枚举常量表>};
 class Image
 {
 private:
   //addPrototype()saves each registered prototype here
-  static Image* _prototypes[10]; 
+  static Image* _prototypes[10]; //这里定义也是定义的原类型
+  //指针数组
+  //static 
+  //https://blog.csdn.net/ypshowm/article/details/89030194
+  //修饰类的数据成员，表明对该类所有对象这个数据成员都只有一个实例。即该实例归 所有对象共有。
+  //static 不需要生成类对象就可以调用。
   static int _nextSlot;
 public:
   virtual void draw()=0;
@@ -110,6 +120,9 @@ imageType input[NUM_IMAGES]={//暂时还不是很理解前面的返回为imageTy
 };
 int main(){
   Image* images[NUM_IMAGES]; //image*类型，指针
+  //这里就是弄了8个image类型
+  //指针数组，images中的每一个元素都是指向一个image类型的指针
+  //生成八个类对象？指向八个类对象？？
   //Given an image type,find the right prototype,and return a clone 
   for (int i=0;i<NUM_IMAGES;i++)
     images[i]=Image::findAndClone(input[i]);
