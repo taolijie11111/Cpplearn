@@ -24,7 +24,7 @@ class BinarySplitterFactory: public SplitterFactory{
 public:
     virtual ISplitter* CreateSplitter(){
         return new BinarySplitter();//不能写成return new ISplitter();
-        //虚函数是一种运行依赖
+        //虚函数是一种运行依赖 
     }
 };
 
