@@ -114,3 +114,22 @@ int* heapsort(int* a,int n){
     }
     
 }
+
+//冒泡排序
+void BubbleSort(int* a,int n){
+    int end=n;
+    int exchange=0;
+    while (end>0)
+    {
+        for(int i=1;i<end;i++){
+            if(a[i-1]>a[i]){
+                swap(a[i-1],a[i]);
+                exchange=1;
+            }
+        }
+        if(0==exchange){
+            break;
+        }
+        end--;
+    }
+}
