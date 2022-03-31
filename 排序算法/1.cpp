@@ -161,9 +161,9 @@ void __MergeSort(int* a,int left,int right,int* tmp){
     if(left >= right){
         return ;
     }
-    if(right-left+1 < 10){
-        InsertSort(a+left,right-left+1);
-    }
+    // if(right-left+1 < 10){
+    //     InsertSort(a+left,right-left+1);
+    // }
     int mid=left+((right-left)>>1);
     __MergeSort(a,left,mid,tmp);
     __MergeSort(a,mid+1,right,tmp);
