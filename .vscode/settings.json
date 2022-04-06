@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "files.associations": {
         "array": "cpp",
         "*.tcc": "cpp",
@@ -16,4 +17,7 @@
         "streambuf": "cpp",
         "tuple": "cpp"
     }
+=======
+  "C_Cpp.errorSquiggles": "Disabled"
+>>>>>>> Notes
 }
